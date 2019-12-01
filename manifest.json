@@ -6,10 +6,11 @@
   "options_page": "options.html",
   "background": {
     "persistent": false,
-    "page":"background.js"
+    "scripts":["background.js"]
   },
   "content_scripts": [
     {
+      "run_at": "document_end",
       "matches": ["https://www.sis.hawaii.edu/uhdad/avail.classes?i=MAN&t=*&s=*", 
         "https://www.star.hawaii.edu/studentinterface/registration/*"],
       "html": ["content.html"],

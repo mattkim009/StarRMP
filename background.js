@@ -18,11 +18,13 @@ chrome.runtime.onInstalled.addListener(function() {
   });
 });
 
-// chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
-//   if(changeInfo && changeInfo.status == "complete"){
-//       chrome.tabs.executeScript(tabId, {file: "jquery-3.1.1.min.js"}, function(){
-//           chrome.tabs.executeScript(tabId, {file: "semantic.min.js"}, function(){
-//             chrome.tabs.executeScript(tabId, {file: "content.js"});
-//       });
-//   });
-// }});
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab){
+  console.log(tabId);
+  console.log(changeInfo);
+  // if(changeInfo && changeInfo.status == "complete"){
+  //     chrome.tabs.executeScript(tabId, {file: "jquery-3.1.1.min.js"}, function(){
+  //         chrome.tabs.executeScript(tabId, {file: "semantic.min.js"}, function(){
+  //           chrome.tabs.executeScript(tabId, {file: "content.js"});
+  //     });
+  // });
+});
