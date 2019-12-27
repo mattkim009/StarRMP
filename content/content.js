@@ -1,5 +1,41 @@
 $(document).ready(function () {
-  var popupLoading = '<div class="ui inline active loader indeterminate text centered tiny">Loading...</div>';
+  const popupLoading = '<div class="ui inline active loader indeterminate text centered tiny">Loading...</div>';
+  const popupTemplate = (data) => {
+    return `<div>
+              <a href=${data.link} target="_blank">
+              <article class="card assignment-card course-id-1">
+                <header class="card-header card-background-color">
+                  <h2>${data.name}</h2>
+                </header>
+                <section class="card-body">
+                  <div class="card-info">
+                    <div class="card-info-element">
+                      <div class="card-info-description">
+                        Quality
+                      </div>
+                      <div class="card-info-value">
+                        ${data.quality}
+                      </div>
+                    </div>
+                    <div class="card-info-element">
+                      <div class="card-info-description">
+                        # Ratings
+                      </div>
+                      <div class="card-info-value">
+                        ${data.number_of_ratings}
+                      </div>
+                    </div>
+                  </div>
+                  <p class="card-body-delimiter"></p>
+                  <br />
+                  <p class="card-tags">
+                    ${data.tags}
+                  </p>
+                </section>
+              </article>
+              </a>
+            </div>`;
+  }
 
   var intervalID = setInterval(function () {
     if ($('.n-course').length >= 2) {
@@ -43,42 +79,15 @@ $(document).ready(function () {
                     for (let i = 0; i < response.tags.length; i++) {
                       tags += `<span class="card-tag">${response.tags[i]}</span>`
                     }
-                    popup.html(`
-                  <div>
-                  <a href=${response.link} target="_blank">
-                  <article class="card assignment-card course-id-1">
-                    <header class="card-header card-background-color">
-                      <h2>${name}</h2>
-                    </header>
-                    <section class="card-body">
-                      <div class="card-info">
-                        <div class="card-info-element">
-                          <div class="card-info-description">
-                            Quality
-                          </div>
-                          <div class="card-info-value">
-                            ${response.quality}
-                          </div>
-                        </div>
-                        <div class="card-info-element">
-                          <div class="card-info-description">
-                            # Ratings
-                          </div>
-                          <div class="card-info-value">
-                            ${response.number_of_ratings}
-                          </div>
-                        </div>
-                      </div>
-                      <p class="card-body-delimiter"></p>
-                      <br />
-                      <p class="card-tags">
-                        ${tags}
-                      </p>
-                    </section>
-                  </article>
-                  </a>
-                  </div>
-                `);
+                    popup.html(popupTemplate(
+                      {
+                        link: response.link,
+                        name: name,
+                        quality: response.quality,
+                        number_of_ratings: response.number_of_ratings,
+                        tags: tags
+                      }
+                    ));
                   }
                 );
               }
@@ -131,42 +140,15 @@ $(document).ready(function () {
                           for (let i = 0; i < response.tags.length; i++) {
                             tags += `<span class="card-tag">${response.tags[i]}</span>`
                           }
-                          popup.html(`
-                        <div>
-                        <a href=${response.link} target="_blank">
-                        <article class="card assignment-card course-id-1">
-                          <header class="card-header card-background-color">
-                            <h2>${name}</h2>
-                          </header>
-                          <section class="card-body">
-                            <div class="card-info">
-                              <div class="card-info-element">
-                                <div class="card-info-description">
-                                  Quality
-                                </div>
-                                <div class="card-info-value">
-                                  ${response.quality}
-                                </div>
-                              </div>
-                              <div class="card-info-element">
-                                <div class="card-info-description">
-                                  # Ratings
-                                </div>
-                                <div class="card-info-value">
-                                  ${response.number_of_ratings}
-                                </div>
-                              </div>
-                            </div>
-                            <p class="card-body-delimiter"></p>
-                            <br />
-                            <p class="card-tags">
-                              ${tags}
-                            </p>
-                          </section>
-                        </article>
-                        </a>
-                        </div>
-                      `);
+                          popup.html(popupTemplate(
+                            {
+                              link: response.link,
+                              name: name,
+                              quality: response.quality,
+                              number_of_ratings: response.number_of_ratings,
+                              tags: tags
+                            }
+                          ));
                         }
                       );
                     }
@@ -221,42 +203,15 @@ $(document).ready(function () {
                           for (let i = 0; i < response.tags.length; i++) {
                             tags += `<span class="card-tag">${response.tags[i]}</span>`
                           }
-                          popup.html(`
-                        <div>
-                        <a href=${response.link} target="_blank">
-                        <article class="card assignment-card course-id-1">
-                          <header class="card-header card-background-color">
-                            <h2>${name}</h2>
-                          </header>
-                          <section class="card-body">
-                            <div class="card-info">
-                              <div class="card-info-element">
-                                <div class="card-info-description">
-                                  Quality
-                                </div>
-                                <div class="card-info-value">
-                                  ${response.quality}
-                                </div>
-                              </div>
-                              <div class="card-info-element">
-                                <div class="card-info-description">
-                                  # Ratings
-                                </div>
-                                <div class="card-info-value">
-                                  ${response.number_of_ratings}
-                                </div>
-                              </div>
-                            </div>
-                            <p class="card-body-delimiter"></p>
-                            <br />
-                            <p class="card-tags">
-                              ${tags}
-                            </p>
-                          </section>
-                        </article>
-                        </a>
-                        </div>
-                      `);
+                          popup.html(popupTemplate(
+                            {
+                              link: response.link,
+                              name: name,
+                              quality: response.quality,
+                              number_of_ratings: response.number_of_ratings,
+                              tags: tags
+                            }
+                          ));
                         }
                       );
                     }
@@ -313,42 +268,15 @@ $(document).ready(function () {
                     for (let i = 0; i < response.tags.length; i++) {
                       tags += `<span class="card-tag">${response.tags[i]}</span>`
                     }
-                    popup.html(`
-                    <div>
-                    <a href=${response.link} target="_blank">
-                    <article class="card assignment-card course-id-1">
-                      <header class="card-header card-background-color">
-                        <h2>${name}</h2>
-                      </header>
-                      <section class="card-body">
-                        <div class="card-info">
-                          <div class="card-info-element">
-                            <div class="card-info-description">
-                              Quality
-                            </div>
-                            <div class="card-info-value">
-                              ${response.quality}
-                            </div>
-                          </div>
-                          <div class="card-info-element">
-                            <div class="card-info-description">
-                              # Ratings
-                            </div>
-                            <div class="card-info-value">
-                              ${response.number_of_ratings}
-                            </div>
-                          </div>
-                        </div>
-                        <p class="card-body-delimiter"></p>
-                        <br />
-                        <p class="card-tags">
-                          ${tags}
-                        </p>
-                      </section>
-                    </article>
-                    </a>
-                    </div>
-                  `);
+                    popup.html(popupTemplate(
+                      {
+                        link: response.link,
+                        name: name,
+                        quality: response.quality,
+                        number_of_ratings: response.number_of_ratings,
+                        tags: tags
+                      }
+                    ));
                   }
                 );
               }
@@ -391,42 +319,15 @@ $(document).ready(function () {
               for (let i = 0; i < response.tags.length; i++) {
                 tags += `<span class="card-tag">${response.tags[i]}</span>`
               }
-              popup.html(`
-              <div>
-              <a href=${response.link} target="_blank">
-              <article class="card assignment-card course-id-1">
-                <header class="card-header card-background-color">
-                  <h2>${name}</h2>
-                </header>
-                <section class="card-body">
-                  <div class="card-info">
-                    <div class="card-info-element">
-                      <div class="card-info-description">
-                        Quality
-                      </div>
-                      <div class="card-info-value">
-                        ${response.quality}
-                      </div>
-                    </div>
-                    <div class="card-info-element">
-                      <div class="card-info-description">
-                        # Ratings
-                      </div>
-                      <div class="card-info-value">
-                        ${response.number_of_ratings}
-                      </div>
-                    </div>
-                  </div>
-                  <p class="card-body-delimiter"></p>
-                  <br />
-                  <p class="card-tags">
-                    ${tags}
-                  </p>
-                </section>
-              </article>
-              </a>
-              </div>
-            `);
+              popup.html(popupTemplate(
+                {
+                  link: response.link,
+                  name: name,
+                  quality: response.quality,
+                  number_of_ratings: response.number_of_ratings,
+                  tags: tags
+                }
+              ));
             }
           );
         }
