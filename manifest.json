@@ -1,7 +1,7 @@
 {
     "name": "StarRMP",
     "version": "1.0",
-    "description": "Automatically searches for professors on RateMyProfessor on select UHawaii websites",
+    "description": "Automatically searches for professors on RateMyProfessor on select University of Hawaii websites",
     "permissions": ["activeTab", "declarativeContent", "storage", "https://www.ratemyprofessors.com/*"],
     "background": {
         "persistent": false,
