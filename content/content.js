@@ -37,6 +37,32 @@ $(document).ready(function () {
             </div>`;
   }
 
+  const queryRatingsWithName = function (popup, name) {
+    chrome.runtime.sendMessage({ contentScriptQuery: "queryRatingsWithName", name: name },
+      response => {
+        if (!response) {
+          return popup.html(`Error!`);
+        }
+        if (response.error) {
+          return popup.html(`${response.error}`);
+        }
+        var tags = ``;
+        for (let i = 0; i < response.tags.length; i++) {
+          tags += `<span class="card-tag">${response.tags[i]}</span>`
+        }
+        popup.html(popupTemplate(
+          {
+            link: response.link,
+            name: name,
+            quality: response.quality,
+            number_of_ratings: response.number_of_ratings,
+            tags: tags
+          }
+        ));
+      }
+    );
+  }
+
   var intervalID = setInterval(function () {
     if ($('.n-course').length >= 2) {
       $('.n-course-component.n-course-instructor')
@@ -67,31 +93,8 @@ $(document).ready(function () {
               onShow: function (el) { // load data (it could be called in an external function.)
                 var popup = this;
                 popup.html(popupLoading);
-                chrome.runtime.sendMessage({ contentScriptQuery: "queryRatingsWithName", name: name },
-                  response => {
-                    if (!response) {
-                      return popup.html(`Error!`);
-                    }
-                    if (response.error) {
-                      return popup.html(`${response.error}`);
-                    }
-                    var tags = ``;
-                    for (let i = 0; i < response.tags.length; i++) {
-                      tags += `<span class="card-tag">${response.tags[i]}</span>`
-                    }
-                    popup.html(popupTemplate(
-                      {
-                        link: response.link,
-                        name: name,
-                        quality: response.quality,
-                        number_of_ratings: response.number_of_ratings,
-                        tags: tags
-                      }
-                    ));
-                  }
-                );
+                queryRatingsWithName(popup, name);
               }
-
             })
           }
         });
@@ -128,31 +131,8 @@ $(document).ready(function () {
                     onShow: function (el) { // load data (it could be called in an external function.)
                       var popup = this;
                       popup.html(popupLoading);
-                      chrome.runtime.sendMessage({ contentScriptQuery: "queryRatingsWithName", name: name },
-                        response => {
-                          if (!response) {
-                            return popup.html(`Error!`);
-                          }
-                          if (response.error) {
-                            return popup.html(`${response.error}`);
-                          }
-                          var tags = ``;
-                          for (let i = 0; i < response.tags.length; i++) {
-                            tags += `<span class="card-tag">${response.tags[i]}</span>`
-                          }
-                          popup.html(popupTemplate(
-                            {
-                              link: response.link,
-                              name: name,
-                              quality: response.quality,
-                              number_of_ratings: response.number_of_ratings,
-                              tags: tags
-                            }
-                          ));
-                        }
-                      );
+                      queryRatingsWithName(popup, name);
                     }
-
                   })
                 }
               });
@@ -191,31 +171,8 @@ $(document).ready(function () {
                     onShow: function (el) { // load data (it could be called in an external function.)
                       var popup = this;
                       popup.html(popupLoading);
-                      chrome.runtime.sendMessage({ contentScriptQuery: "queryRatingsWithName", name: name },
-                        response => {
-                          if (!response) {
-                            return popup.html(`Error!`);
-                          }
-                          if (response.error) {
-                            return popup.html(`${response.error}`);
-                          }
-                          var tags = ``;
-                          for (let i = 0; i < response.tags.length; i++) {
-                            tags += `<span class="card-tag">${response.tags[i]}</span>`
-                          }
-                          popup.html(popupTemplate(
-                            {
-                              link: response.link,
-                              name: name,
-                              quality: response.quality,
-                              number_of_ratings: response.number_of_ratings,
-                              tags: tags
-                            }
-                          ));
-                        }
-                      );
+                      queryRatingsWithName(popup, name);
                     }
-
                   })
                 }
               });
@@ -256,38 +213,15 @@ $(document).ready(function () {
               onShow: function (el) { // load data (it could be called in an external function.)
                 var popup = this;
                 popup.html(popupLoading);
-                chrome.runtime.sendMessage({ contentScriptQuery: "queryRatingsWithName", name: name },
-                  response => {
-                    if (!response) {
-                      return popup.html(`Error!`);
-                    }
-                    if (response.error) {
-                      return popup.html(`${response.error}`);
-                    }
-                    var tags = ``;
-                    for (let i = 0; i < response.tags.length; i++) {
-                      tags += `<span class="card-tag">${response.tags[i]}</span>`
-                    }
-                    popup.html(popupTemplate(
-                      {
-                        link: response.link,
-                        name: name,
-                        quality: response.quality,
-                        number_of_ratings: response.number_of_ratings,
-                        tags: tags
-                      }
-                    ));
-                  }
-                );
+                queryRatingsWithName(popup, name);
               }
-
             })
           }
         });
       clearInterval(intervalID2);
     }
   },
-    500);
+  500);
 
 
 
@@ -307,30 +241,9 @@ $(document).ready(function () {
         onShow: function (el) { // load data (it could be called in an external function.)
           var popup = this;
           popup.html(popupLoading);
-          chrome.runtime.sendMessage({ contentScriptQuery: "queryRatingsWithName", name: name },
-            response => {
-              if (!response) {
-                return popup.html(`Error!`);
-              }
-              if (response.error) {
-                return popup.html(`${response.error}`);
-              }
-              var tags = ``;
-              for (let i = 0; i < response.tags.length; i++) {
-                tags += `<span class="card-tag">${response.tags[i]}</span>`
-              }
-              popup.html(popupTemplate(
-                {
-                  link: response.link,
-                  name: name,
-                  quality: response.quality,
-                  number_of_ratings: response.number_of_ratings,
-                  tags: tags
-                }
-              ));
-            }
-          );
+          queryRatingsWithName(popup, name);
         }
       })
     });
-})
+    
+});
