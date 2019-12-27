@@ -221,7 +221,7 @@ $(document).ready(function () {
       clearInterval(intervalID2);
     }
   },
-  500);
+  250);
 
 
 
@@ -245,5 +245,5 @@ $(document).ready(function () {
         }
       })
     });
-    
+
 });
