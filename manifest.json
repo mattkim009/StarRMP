@@ -1,7 +1,7 @@
 {
-    "name": "Rate My Professor Popup",
+    "name": "StarRMP",
     "version": "1.0",
-    "description": "Build an Extension!",
+    "description": "Automatically searches for professors on RateMyProfessor on select UHawaii websites",
     "permissions": ["activeTab", "declarativeContent", "storage", "https://www.ratemyprofessors.com/*"],
     "background": {
         "persistent": false,
