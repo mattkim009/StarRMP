@@ -1,37 +1,36 @@
 {
-  "name": "Rate My Professor Popup",
-  "version": "1.0",
-  "description": "Build an Extension!",
-  "permissions": ["activeTab", "declarativeContent", "storage", "https://www.ratemyprofessors.com/*"],
-  "options_page": "./options/options.html",
-  "background": {
-    "persistent": false,
-    "scripts":["./background/dist/jquery-3.1.1.min.js", "./background/background.js"]
-  },
-  "content_scripts": [
-    {
-      "run_at": "document_end",
-      "matches": ["https://www.sis.hawaii.edu/uhdad/*", 
-        "https://www.star.hawaii.edu/studentinterface/registration/*"],
-      "html": ["./content/content.html"],
-      "css": ["./content/dist/semantic.min.css"],
-      "js": ["./content/dist/jquery-3.1.1.min.js", "./content/dist/semantic.min.js", "./content/content.js"]
-    }
-  ],
-  "page_action": {
-    "default_popup": "./popup/popup.html",
-    "default_icon": {
-      "16": "images/get_started16.png",
-      "32": "images/get_started32.png",
-      "48": "images/get_started48.png",
-      "128": "images/get_started128.png"
-    }
-  },
-  "icons": {
-    "16": "images/get_started16.png",
-    "32": "images/get_started32.png",
-    "48": "images/get_started48.png",
-    "128": "images/get_started128.png"
-  },
-  "manifest_version": 2
+    "name": "Rate My Professor Popup",
+    "version": "1.0",
+    "description": "Build an Extension!",
+    "permissions": ["activeTab", "declarativeContent", "storage", "https://www.ratemyprofessors.com/*"],
+    "options_page": "./options/options.html",
+    "background": {
+        "persistent": false,
+        "scripts": ["./background/dist/jquery-3.1.1.min.js", "./background/background.js"]
+    },
+    "content_scripts": [{
+        "run_at": "document_end",
+        "matches": ["https://www.sis.hawaii.edu/uhdad/avail.classes*",
+            "https://www.star.hawaii.edu/studentinterface/registration/*"
+        ],
+        "html": ["./content/content.html"],
+        "css": ["./content/dist/semantic.min.css", "./content/content.css"],
+        "js": ["./content/dist/jquery-3.1.1.min.js", "./content/dist/semantic.min.js", "./content/content.js"]
+    }],
+    "page_action": {
+        "default_popup": "./popup/popup.html",
+        "default_icon": {
+            "16": "images/get_started16.png",
+            "32": "images/get_started32.png",
+            "48": "images/get_started48.png",
+            "128": "images/get_started128.png"
+        }
+    },
+    "icons": {
+        "16": "images/get_started16.png",
+        "32": "images/get_started32.png",
+        "48": "images/get_started48.png",
+        "128": "images/get_started128.png"
+    },
+    "manifest_version": 2
 }

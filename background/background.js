@@ -50,11 +50,13 @@ chrome.runtime.onMessage.addListener(
             //TODO: style popup so it looks legit
             //TODO: Do name in RateMyProfessor have dashes
             var quality = $(rmpResult).find("div.RatingValue__Numerator-qw8sqy-2.gxuTRq").text();
-            var number_of_ratings = $(rmpResult).find('div.RatingValue__NumRatings-qw8sqy-0.BDziL a').text();
+            var number_of_ratings = $(rmpResult).find('div.RatingValue__NumRatings-qw8sqy-0.BDziL a').text().replace('ratings', '').trim();
+            var tags = $(rmpResult).find('div.TeacherTags__TagsContainer-sc-16vmh1y-0.dbxJaW span').map((i, val) => $(val).text());
             sendResponse(
               { link,
                 quality,
-                number_of_ratings
+                number_of_ratings,
+                tags
               });
           });
         };
