@@ -1,5 +1,3 @@
-console.log('StarRMP Running!');
-
 $(document).ready(function () {
   var popupLoading = '<div class="ui inline active loader indeterminate text centered tiny">Loading...</div>';
 
